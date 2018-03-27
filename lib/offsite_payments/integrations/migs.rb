@@ -45,6 +45,7 @@ module OffsitePayments
             ReturnURL: @options.fetch(:return_url)
           )
           post[:SecureHash] = SecureHash.calculate(@secure_hash, post)
+          post[:SecureHashType] = 'SHA256'
 
           self.class.base_url + '?' + post_data(post)
         end
@@ -141,13 +142,15 @@ module OffsitePayments
       end
 
       class SecureHash
-        require 'digest/md5' # Used in add_secure_hash
+        require 'openssl'
+
+        DIGEST = OpenSSL::Digest.new('sha256')
 
         def self.calculate(secure_hash, post)
-          post_without_secure_hash = post.reject { |k, _v| k == :SecureHash }
-          sorted_values = post_without_secure_hash.sort_by(&:to_s).map(&:last)
-          input = secure_hash + sorted_values.join
-          Digest::MD5.hexdigest(input).upcase
+          post_without_secure_hash = post.reject { |k, _v| [:SecureHash, :SecureHashType].include? k }
+          sorted_values = post_without_secure_hash.sort_by(&:to_s).map { |key, value| "vpc_#{key}=#{value}"}
+          input = sorted_values.join('&')
+          OpenSSL::HMAC.hexdigest(DIGEST, [secure_hash].pack('H*'), input).upcase
         end
       end
 
