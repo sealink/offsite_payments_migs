@@ -1,9 +1,10 @@
 $:.push File.expand_path("../lib", __FILE__)
+require 'offsite_payments_migs/version'
 
 Gem::Specification.new do |s|
   s.platform     = Gem::Platform::RUBY
   s.name         = 'offsite_payments_migs'
-  s.version      = '1.1.0'
+  s.version      = OffsitePaymentsMigs::VERSION
   s.date         = '2018-03-27'
   s.summary      = 'MiGS integration for the activemerchant offsite_payments gem.'
   s.description  = 'This gem extends the activemerchant offsite_payments gem ' \
