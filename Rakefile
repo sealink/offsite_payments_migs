@@ -25,7 +25,7 @@ task :test => 'test:units'
 namespace :test do
   Rake::TestTask.new(:units) do |t|
     t.pattern = 'test/unit/**/*_test.rb'
-    t.ruby_opts << '-rubygems'
+    t.ruby_opts << '-rrubygems'
     t.libs << 'test'
     t.verbose = true
   end
