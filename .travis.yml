@@ -1,5 +1,5 @@
 language: ruby
-script: "bundle && bundle exec rake test:units"
+script: "bundle && bundle install && bundle exec rake test:units"
 sudo: false
 cache: bundler
 
