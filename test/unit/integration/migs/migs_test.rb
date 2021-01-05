@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'uri'
 
 class MigsTest < Test::Unit::TestCase
   DIGEST = OpenSSL::Digest.new('sha256')
@@ -103,7 +104,7 @@ class MigsTest < Test::Unit::TestCase
   def response_string_to_params(string)
     string.split('&').map.with_object({}) { |obj, hash|
       key, value = obj.split('=')
-      hash[key] = URI.unescape(value)
+      hash[key] = URI.decode_www_form_component(value)
     }
   end
 end
