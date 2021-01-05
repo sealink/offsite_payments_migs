@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
 
   s.add_dependency('offsite_payments')
+  s.add_dependency('money')
   s.add_development_dependency('rake')
   s.add_development_dependency('test-unit', '~> 3.0')
 end
