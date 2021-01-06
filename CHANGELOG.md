@@ -1,6 +1,6 @@
 # Offsite Payments MiGS CHANGELOG
 
-### Unreleased
+### 1.2.0
 
 - [TT-8628] Update to build with github actions / ruby 3.0
 
