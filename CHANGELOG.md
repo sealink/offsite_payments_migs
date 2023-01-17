@@ -3,6 +3,7 @@
 ## Unreleased
 
 - [PLAT-183] Update to build with ruby 3.1
+- [PLAT-1175] Update ruby build 3.2
 
 ### 1.2.0
 
