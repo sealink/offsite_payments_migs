@@ -1,6 +1,6 @@
 # Offsite Payments MiGS CHANGELOG
 
-## Unreleased
+## 1.3.0
 
 - [PLAT-183] Update to build with ruby 3.1
 - [PLAT-1175] Update ruby build 3.2
